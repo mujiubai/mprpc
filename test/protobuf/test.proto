@@ -1,0 +1,49 @@
+//使用  protoc friend.proto --cpp_out=./  生成代码
+syntax="proto3";//protobuf版本
+
+package fixbug;//声明代码所在包（namespace）
+
+//开启生成service服务类和方法描述
+option cc_generic_services=true;
+
+message ResultCode{
+    int32 errcode=1;
+    bytes errmsg=2;
+}
+
+//登录消息类型
+message LoginRequest{
+    bytes name=1;//1:消息类型字段
+    bytes pwd=2;
+    // map<int32,string> test=3;
+}
+
+//登录相应消息类型
+message LoginResponse{
+    ResultCode result=1;
+    bool success=3;
+}
+
+message GetFriendListsQuest{
+    uint32 userid=1;
+}
+
+message User{
+    bytes name=1;
+    uint32 age=2;
+    enum Sex{
+        MAN=0;
+        WOMAN=1;
+    }
+    Sex sex=3;
+}
+
+message GetFriendListsResponse{
+    ResultCode result=1;
+    repeated User friend_list=2;//列表类型
+}
+
+service UserServiceRpc{
+    rpc Login(LoginRequest) returns(LoginResponse);
+    rpc GetFriendLists(GetFriendListsQuest) returns(GetFriendListsResponse);
+}
