@@ -28,7 +28,7 @@ void MprpcChannel::CallMethod(const google::protobuf::MethodDescriptor* method,
   if (request->SerializeToString(&args_str)) {
     args_size = args_str.size();
   } else {
-    std::cout << "serialize requeset error!" << std::endl;
+    controller->SetFailed("serialize requeset error!");
     return;
   }
 
@@ -42,7 +42,7 @@ void MprpcChannel::CallMethod(const google::protobuf::MethodDescriptor* method,
   if (rpcHeader.SerializeToString(&rpc_header_str)) {
     header_size = rpc_header_str.size();
   } else {
-    std::cout << "serialize rpc header error!" << std::endl;
+    controller->SetFailed("serialize rpc header error!");
     return;
   }
 
@@ -64,9 +64,9 @@ void MprpcChannel::CallMethod(const google::protobuf::MethodDescriptor* method,
   //使用tcp编程，完成rpc方法调用
   int clientfd = socket(AF_INET, SOCK_STREAM, 0);
   if (clientfd == -1) {
-    std::cout << "create socket error!" << std::endl;
+    controller->SetFailed("create socket error!");
     close(clientfd);
-    exit(EXIT_FAILURE);
+    return;
   }
 
   std::string ip =
@@ -84,13 +84,13 @@ void MprpcChannel::CallMethod(const google::protobuf::MethodDescriptor* method,
   //发起连接
   if (connect(clientfd, (struct sockaddr*)&server_addr, sizeof(server_addr)) ==
       -1) {
-    std::cout << "connect error!" << std::endl;
+    controller->SetFailed("connect error!");
     close(clientfd);
-    exit(EXIT_FAILURE);
+    return;
   }
   //发送请求
   if (-1 == send(clientfd, send_rpc_str.c_str(), send_rpc_str.size(), 0)) {
-    std::cout << "send data error!" << std::endl;
+    controller->SetFailed("send data error!");
     close(clientfd);
     return;
   }
@@ -98,14 +98,17 @@ void MprpcChannel::CallMethod(const google::protobuf::MethodDescriptor* method,
   char recv_buf[1024] = {0};
   int recv_size = 0;
   if (-1 == (recv_size = recv(clientfd, recv_buf, 1024, 0))) {
-    std::cout << "recv data error!" << std::endl;
+    controller->SetFailed("recv data error!");
     close(clientfd);
     return;
   }
   //反序列化响应数据
-//   std::string response_str(recv_buf, 0, recv_size);//这样构造会出现bug，遇见\0就结束
-  if (!response->ParseFromArray(recv_buf,recv_size)) {
+  //   std::string response_str(recv_buf, 0,
+  //   recv_size);//这样构造会出现bug，遇见\0就结束
+  if (!response->ParseFromArray(recv_buf, recv_size)) {
     std::cout << "parse error!" << std::endl;
+    controller->SetFailed("parse error!");
     close(clientfd);
+    return;
   }
 }

@@ -3,6 +3,7 @@
 #include "friend.pb.h"
 #include "mprpcapplication.h"
 #include "mprpcchannel.h"
+#include "mprpccontroller.h"
 
 int main(int argc, char **argv) {
   //需要先调用框架的初始化函数
@@ -16,16 +17,22 @@ int main(int argc, char **argv) {
   request.set_id(1);
 
   fixbug::getFriendListResponse response;
-  stub.getFriendList(nullptr, &request, &response, nullptr);
+  MprpcController controller;
 
-  if (response.result().errcode() == 0) {
-    std::cout << "rpc login response: " << std::endl;
-    for (auto name : response.friends()) {
-      std::cout << name << std::endl;
-    }
+  stub.getFriendList(&controller, &request, &response, nullptr);
+
+  if (controller.Failed()) {
+    std::cout << controller.ErrorText() << std::endl;
   } else {
-    std::cout << "rpc login response error:" << response.result().errmsg()
-              << std::endl;
+    if (response.result().errcode() == 0) {
+      std::cout << "rpc login response: " << std::endl;
+      for (auto name : response.friends()) {
+        std::cout << name << std::endl;
+      }
+    } else {
+      std::cout << "rpc login response error:" << response.result().errmsg()
+                << std::endl;
+    }
   }
 
   return 0;

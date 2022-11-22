@@ -2,6 +2,7 @@
 #include <string>
 
 #include "friend.pb.h"
+#include "logger.h"
 #include "mprpcapplication.h"
 #include "rpcprovider.h"
 
@@ -33,6 +34,8 @@ class FriendService : public fixbug::FriendServiceRpc {
 };
 
 int main(int argc, char** argv) {
+  LOG_INFO("first log message test\n");
+  LOG_ERROR("%s:%s:%d\n",__FILE__,__FUNCTION__,__LINE__);
   //框架初始化
   MprpcApplication::Init(argc, argv);
 
