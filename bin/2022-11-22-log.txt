@@ -1,0 +1,4 @@
+[ERROR]11:16:4 => first log message test
+[ERROR]11:16:4 => /home/enwu/cpp_poj/mprpc/example/callee/friendservice.cc:main:38
+[ERROR]11:19:11 => first log message test
+[ERROR]11:19:11 => /home/enwu/cpp_poj/mprpc/example/callee/friendservice.cc:main:38

@@ -1,5 +1,0 @@
-
-21:39:26 => first log message test
-
-21:39:26 => /home/enwu/cpp_poj/mprpc/example/callee/friendservice.cc:main:38
-
