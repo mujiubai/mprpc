@@ -1,4 +1,5 @@
 #include "mprpcapplication.h"
+#include "logger.h"
 
 #include <unistd.h>
 
@@ -8,9 +9,10 @@
 MprpcConfig MprpcApplication::config_;
 
 void ShowArgsHelp() {
-  std::cout << "format: command -i <configfile>" << std::endl;
+  LOG_INFO("format: command -i <configfile>\n");
 }
 
+//初始化程序配置
 void MprpcApplication::Init(int argc, char** argv) {
   if (argc < 2) {
     ShowArgsHelp();

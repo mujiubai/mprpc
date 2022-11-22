@@ -11,8 +11,11 @@
 
 #include "mprpcapplication.h"
 #include "rpcheader.pb.h"
+#include "logger.h"
 
+//所有通过stub代理对象调用的rpc方法，都到这里做rpc方法调用数据的序列化和网络发送
 // headersize+service_name+method_name+args_size+args
+//先将请求服务和方法以及参数序列化，发送到远程调用方，然后等待接受结果，再将其反序列化到response中
 void MprpcChannel::CallMethod(const google::protobuf::MethodDescriptor* method,
                               google::protobuf::RpcController* controller,
                               const google::protobuf::Message* request,
@@ -52,14 +55,14 @@ void MprpcChannel::CallMethod(const google::protobuf::MethodDescriptor* method,
   send_rpc_str += rpc_header_str;
   send_rpc_str += args_str;
 
-  std::cout << "==========================================" << std::endl;
-  std::cout << "header_size:" << header_size << std::endl;
-  std::cout << "rpc_header_str:" << rpc_header_str << std::endl;
-  std::cout << "service_name:" << service_name << std::endl;
-  std::cout << "method_name:" << method_name << std::endl;
-  std::cout << "args_str:" << args_str << std::endl;
-  std::cout << "send_rpc_str:" << send_rpc_str << std::endl;
-  std::cout << "==========================================" << std::endl;
+  // std::cout << "==========================================" << std::endl;
+  // std::cout << "header_size:" << header_size << std::endl;
+  // std::cout << "rpc_header_str:" << rpc_header_str << std::endl;
+  // std::cout << "service_name:" << service_name << std::endl;
+  // std::cout << "method_name:" << method_name << std::endl;
+  // std::cout << "args_str:" << args_str << std::endl;
+  // std::cout << "send_rpc_str:" << send_rpc_str << std::endl;
+  // std::cout << "==========================================" << std::endl;
 
   //使用tcp编程，完成rpc方法调用
   int clientfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -106,7 +109,7 @@ void MprpcChannel::CallMethod(const google::protobuf::MethodDescriptor* method,
   //   std::string response_str(recv_buf, 0,
   //   recv_size);//这样构造会出现bug，遇见\0就结束
   if (!response->ParseFromArray(recv_buf, recv_size)) {
-    std::cout << "parse error!" << std::endl;
+    LOG_INFO("parse error!");
     controller->SetFailed("parse error!");
     close(clientfd);
     return;

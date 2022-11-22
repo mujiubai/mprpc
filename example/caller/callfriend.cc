@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "friend.pb.h"
+#include "logger.h"
 #include "mprpcapplication.h"
 #include "mprpcchannel.h"
 #include "mprpccontroller.h"
@@ -22,16 +23,16 @@ int main(int argc, char **argv) {
   stub.getFriendList(&controller, &request, &response, nullptr);
 
   if (controller.Failed()) {
-    std::cout << controller.ErrorText() << std::endl;
+    LOG_INFO("%s", controller.ErrorText().c_str());
   } else {
     if (response.result().errcode() == 0) {
-      std::cout << "rpc login response: " << std::endl;
+      LOG_INFO("rpc login response: ");
       for (auto name : response.friends()) {
-        std::cout << name << std::endl;
+        LOG_INFO("%s", name.c_str());
       }
     } else {
-      std::cout << "rpc login response error:" << response.result().errmsg()
-                << std::endl;
+      LOG_INFO("rpc login response error:%s",
+               response.result().errmsg().c_str());
     }
   }
 

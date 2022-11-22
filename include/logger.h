@@ -14,22 +14,22 @@ enum LogLevel {
  */
 class Logger {
  public:
-    //获取日志单例
-    static Logger& GetInstance();
- //设置日志级别
+  //获取日志单例
+  static Logger &GetInstance();
+  //设置日志级别
   void SetLogLevel(LogLevel level);
   //写日志
-  void Log(std::string msg);
+  void Log(const std::string &msg);
 
  private:
+ //在构造函数中开启新线程，不断写日志
   Logger();
-  Logger(const Logger&) = delete;
-  Logger(Logger&&) = delete;
+  Logger(const Logger &) = delete;
+  Logger(Logger &&) = delete;
 
   int m_loglevel;
   LockQueue<std::string> m_lockQue;  //日志缓冲队列
 };
-
 
 //定义宏
 #define LOG_INFO(logmsgformat, ...)                 \

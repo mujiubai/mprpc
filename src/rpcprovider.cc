@@ -3,6 +3,7 @@
 #include <functional>
 #include <string>
 
+#include "logger.h"
 #include "mprpcapplication.h"
 #include "rpcheader.pb.h"
 
@@ -17,19 +18,20 @@ void RpcProvider::NotiFyService(google::protobuf::Service *service) {
   //获取方法数量
   int methodCnt = pserverDesc->method_count();
 
-  std::cout << "service_name:" << service_name << std::endl;
+  LOG_INFO("service_name:%s", service_name.c_str());
 
+  //将service中的所有方法保存到service_info中
   for (int i = 0; i < methodCnt; ++i) {
     //获取服务对象指定下标的服务方法描述
     const google::protobuf::MethodDescriptor *pmethodDesc =
         pserverDesc->method(i);
     std::string method_name = pmethodDesc->name();
     service_info.m_methodMap.insert({method_name, pmethodDesc});
-    std::cout << "method_name:" << method_name << std::endl;
+    LOG_INFO("method_name:%s", method_name.c_str());
   }
 
   service_info.m_service = service;
-  m_serviceMap.insert({service_name, service_info});
+  m_serviceMap.insert({service_name, service_info});  //保存service
 }
 
 //启动rpc服务节点，开始提供rpc远程网络调用服务
@@ -54,8 +56,7 @@ void RpcProvider::Run() {
 
   //设置muduo库线程数
   //   server.setThreadNum(4);
-  std::cout << "RpcProvider start service at ip:" << ip << " port:" << port
-            << std::endl;
+  LOG_INFO("RpcProvider start service at ip:%s port:%d", ip.c_str(), port);
 
   server.start();
   m_eventLoop.loop();
@@ -73,6 +74,7 @@ void RpcProvider::OnConnection(const muduo::TcpConnectionPtr &conn) {
  * service_name method_name args
  * 定义proto的message类型，进行数据的序列化和反序列化
  * header_size+header_str+args_str
+ * 将远程传过来的字符串反序列化生成新的request对象，然后调用相应的方法，最后将response结果序列化字符串发送回去
  *
  * 读写事件回调  远程有rpc服务请求 onmessage会响应
  */
@@ -98,30 +100,29 @@ void RpcProvider::OnMessage(const muduo::TcpConnectionPtr &conn,
     args_size = rpcHeader.args_size();
   } else {
     //反序列化失败
-    std::cout << "rpc_header_str:" << rpc_header_str << " parse error!"
-              << std::endl;
+    LOG_INFO("rpc_header_str:%s parse error!", rpc_header_str.c_str());
   }
   std::string args_str = recv_buf.substr(4 + header_size, args_size);
 
-  std::cout << "==========================================" << std::endl;
-  std::cout << "header_size:" << header_size << std::endl;
-  std::cout << "rpc_header_str:" << rpc_header_str << std::endl;
-  std::cout << "service_name:" << service_name << std::endl;
-  std::cout << "method_name:" << method_name << std::endl;
-  std::cout << "args_str:" << args_str << std::endl;
-  std::cout << "==========================================" << std::endl;
+  // std::cout << "==========================================" << std::endl;
+  // std::cout << "header_size:" << header_size << std::endl;
+  // std::cout << "rpc_header_str:" << rpc_header_str << std::endl;
+  // std::cout << "service_name:" << service_name << std::endl;
+  // std::cout << "method_name:" << method_name << std::endl;
+  // std::cout << "args_str:" << args_str << std::endl;
+  // std::cout << "==========================================" << std::endl;
 
   //获取service对象和method对象
   const auto &it = m_serviceMap.find(service_name);
   if (it == m_serviceMap.end()) {
     std::cout << service_name << " is not exist!" << std::endl;
+    LOG_ERROR("%s is not exist!", service_name.c_str());
     return;
   }
 
   const auto &mit = it->second.m_methodMap.find(method_name);
   if (mit == it->second.m_methodMap.end()) {
-    std::cout << service_name << ": " << method_name << " is not exist!"
-              << std::endl;
+    LOG_INFO("%s:%s is not exist!", service_name.c_str(), method_name.c_str());
     return;
   }
 
@@ -134,13 +135,13 @@ void RpcProvider::OnMessage(const muduo::TcpConnectionPtr &conn,
   google::protobuf::Message *request =
       service->GetRequestPrototype(method).New();
   if (!request->ParseFromString(args_str)) {
-    std::cout << "request parse error! content:" << args_str << std::endl;
+    LOG_INFO("request parse error! content:%s", args_str.c_str());
   }
   google::protobuf::Message *response =
       service->GetResponsePrototype(method).New();
 
   // method方法绑定一个closure的回调函数
-  //相当于使用SendRpcResponse函数重写了closure类中的Run方法
+  //相当于使用SendRpcResponse函数重写了closure类中的Run方法,在用户自己写得服务中最后会执行done->run(),最终会执行SendRpcResponse方法
   google::protobuf::Closure *done =
       google::protobuf::NewCallback<RpcProvider,
                                     const muduo::TcpConnectionPtr &,
@@ -158,7 +159,7 @@ void RpcProvider::SendRpcResponse(const muduo::TcpConnectionPtr &conn,
   if (response->SerializeToString(&response_str)) {
     conn->send(response_str);
   } else {
-    std::cout << "serialize response_str error!" << std::endl;
+    LOG_INFO("serialize response_str error!");
   }
   //模拟http短链接服务，由rpcprovider主动断开连接
   conn->shutdown();

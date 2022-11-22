@@ -47,4 +47,4 @@ Logger &Logger::GetInstance() {
 //设置日志级别
 void Logger::SetLogLevel(LogLevel level) { m_loglevel = level; }
 //写日志 把日志信息写入lockQueue中
-void Logger::Log(std::string msg) { m_lockQue.Push(msg); }
+void Logger::Log(const std::string &msg) { m_lockQue.Push(msg); }

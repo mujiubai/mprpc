@@ -9,7 +9,7 @@
 class FriendService : public fixbug::FriendServiceRpc {
  public:
   std::vector<std::string> GetFriendList(uint32_t userid) {
-    std::cout << " do GetFriendList service" << std::endl;
+    LOG_INFO(" do GetFriendList service");
     std::vector<std::string> vec;
     vec.push_back("li");
     vec.push_back("zhang");
@@ -34,8 +34,8 @@ class FriendService : public fixbug::FriendServiceRpc {
 };
 
 int main(int argc, char** argv) {
-  LOG_INFO("first log message test\n");
-  LOG_ERROR("%s:%s:%d\n",__FILE__,__FUNCTION__,__LINE__);
+  LOG_INFO("first log message test");
+  LOG_ERROR("%s:%s:%d",__FILE__,__FUNCTION__,__LINE__);
   //框架初始化
   MprpcApplication::Init(argc, argv);
 

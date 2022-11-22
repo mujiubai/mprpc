@@ -13,10 +13,11 @@ template <typename T>
 class LockQueue {
  public:
 
- //多个工作线程都会写日志queue
+ //多个工作线程都会写日志queue，互斥访问
   void Push(const T& data) {
     std::lock_guard<std::mutex> lock(m_mutex);
-    m_queue.push(data);
+    //move提高push字符串效率 原data不能再使用
+    m_queue.push(std::move(data));
     m_condvariable.notify_one();
   }
 
@@ -33,7 +34,7 @@ class LockQueue {
   }
 
  private:
-  std::queue<T> m_queue;
-  std::mutex m_mutex;
-  std::condition_variable m_condvariable;
+  std::queue<T> m_queue;//存储数据
+  std::mutex m_mutex;//互斥访问queue
+  std::condition_variable m_condvariable;//用户唤醒写日志
 };
