@@ -10,7 +10,7 @@
 #include <unistd.h>
 
 #include "mprpcapplication.h"
-#include "rpcheader.pb.h"
+#include "../protobuf/rpcheader.pb.h"
 #include "logger.h"
 
 //所有通过stub代理对象调用的rpc方法，都到这里做rpc方法调用数据的序列化和网络发送

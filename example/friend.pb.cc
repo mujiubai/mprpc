@@ -14,64 +14,48 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
-extern PROTOBUF_INTERNAL_EXPORT_friend_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ResultCode_friend_2eproto;
+
+PROTOBUF_PRAGMA_INIT_SEG
 namespace fixbug {
-class ResultCodeDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ResultCode> _instance;
-} _ResultCode_default_instance_;
-class getFriendListRequestDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<getFriendListRequest> _instance;
-} _getFriendListRequest_default_instance_;
-class getFriendListResponseDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<getFriendListResponse> _instance;
-} _getFriendListResponse_default_instance_;
+constexpr ResultCode::ResultCode(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : errmsg_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , errcode_(0){}
+struct ResultCodeDefaultTypeInternal {
+  constexpr ResultCodeDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~ResultCodeDefaultTypeInternal() {}
+  union {
+    ResultCode _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ResultCodeDefaultTypeInternal _ResultCode_default_instance_;
+constexpr getFriendListRequest::getFriendListRequest(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : id_(0u){}
+struct getFriendListRequestDefaultTypeInternal {
+  constexpr getFriendListRequestDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~getFriendListRequestDefaultTypeInternal() {}
+  union {
+    getFriendListRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT getFriendListRequestDefaultTypeInternal _getFriendListRequest_default_instance_;
+constexpr getFriendListResponse::getFriendListResponse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : friends_()
+  , result_(nullptr){}
+struct getFriendListResponseDefaultTypeInternal {
+  constexpr getFriendListResponseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~getFriendListResponseDefaultTypeInternal() {}
+  union {
+    getFriendListResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT getFriendListResponseDefaultTypeInternal _getFriendListResponse_default_instance_;
 }  // namespace fixbug
-static void InitDefaultsscc_info_ResultCode_friend_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::fixbug::_ResultCode_default_instance_;
-    new (ptr) ::fixbug::ResultCode();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::fixbug::ResultCode::InitAsDefaultInstance();
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ResultCode_friend_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ResultCode_friend_2eproto}, {}};
-
-static void InitDefaultsscc_info_getFriendListRequest_friend_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::fixbug::_getFriendListRequest_default_instance_;
-    new (ptr) ::fixbug::getFriendListRequest();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::fixbug::getFriendListRequest::InitAsDefaultInstance();
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_getFriendListRequest_friend_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_getFriendListRequest_friend_2eproto}, {}};
-
-static void InitDefaultsscc_info_getFriendListResponse_friend_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::fixbug::_getFriendListResponse_default_instance_;
-    new (ptr) ::fixbug::getFriendListResponse();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::fixbug::getFriendListResponse::InitAsDefaultInstance();
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_getFriendListResponse_friend_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_getFriendListResponse_friend_2eproto}, {
-      &scc_info_ResultCode_friend_2eproto.base,}};
-
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_friend_2eproto[3];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_friend_2eproto = nullptr;
 static const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* file_level_service_descriptors_friend_2eproto[1];
@@ -120,74 +104,72 @@ const char descriptor_table_protodef_friend_2eproto[] PROTOBUF_SECTION_VARIABLE(
   "istRequest\032\035.fixbug.getFriendListRespons"
   "eB\003\200\001\001b\006proto3"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_friend_2eproto_deps[1] = {
-};
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_friend_2eproto_sccs[3] = {
-  &scc_info_ResultCode_friend_2eproto.base,
-  &scc_info_getFriendListRequest_friend_2eproto.base,
-  &scc_info_getFriendListResponse_friend_2eproto.base,
-};
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_friend_2eproto_once;
-static bool descriptor_table_friend_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_friend_2eproto = {
-  &descriptor_table_friend_2eproto_initialized, descriptor_table_protodef_friend_2eproto, "friend.proto", 294,
-  &descriptor_table_friend_2eproto_once, descriptor_table_friend_2eproto_sccs, descriptor_table_friend_2eproto_deps, 3, 0,
+  false, false, 294, descriptor_table_protodef_friend_2eproto, "friend.proto", 
+  &descriptor_table_friend_2eproto_once, nullptr, 0, 3,
   schemas, file_default_instances, TableStruct_friend_2eproto::offsets,
-  file_level_metadata_friend_2eproto, 3, file_level_enum_descriptors_friend_2eproto, file_level_service_descriptors_friend_2eproto,
+  file_level_metadata_friend_2eproto, file_level_enum_descriptors_friend_2eproto, file_level_service_descriptors_friend_2eproto,
 };
+PROTOBUF_ATTRIBUTE_WEAK ::PROTOBUF_NAMESPACE_ID::Metadata
+descriptor_table_friend_2eproto_metadata_getter(int index) {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_friend_2eproto);
+  return descriptor_table_friend_2eproto.file_level_metadata[index];
+}
 
 // Force running AddDescriptors() at dynamic initialization time.
-static bool dynamic_init_dummy_friend_2eproto = (  ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_friend_2eproto), true);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_friend_2eproto(&descriptor_table_friend_2eproto);
 namespace fixbug {
 
 // ===================================================================
 
-void ResultCode::InitAsDefaultInstance() {
-}
 class ResultCode::_Internal {
  public:
 };
 
-ResultCode::ResultCode()
-  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+ResultCode::ResultCode(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:fixbug.ResultCode)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:fixbug.ResultCode)
 }
 ResultCode::ResultCode(const ResultCode& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _internal_metadata_(nullptr) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   errmsg_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_errmsg().empty()) {
-    errmsg_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.errmsg_);
+    errmsg_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_errmsg(), 
+      GetArena());
   }
   errcode_ = from.errcode_;
   // @@protoc_insertion_point(copy_constructor:fixbug.ResultCode)
 }
 
 void ResultCode::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ResultCode_friend_2eproto.base);
-  errmsg_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  errcode_ = 0;
+errmsg_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+errcode_ = 0;
 }
 
 ResultCode::~ResultCode() {
   // @@protoc_insertion_point(destructor:fixbug.ResultCode)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void ResultCode::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   errmsg_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
+void ResultCode::ArenaDtor(void* object) {
+  ResultCode* _this = reinterpret_cast< ResultCode* >(object);
+  (void)_this;
+}
+void ResultCode::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void ResultCode::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ResultCode& ResultCode::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ResultCode_friend_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ResultCode::Clear() {
 // @@protoc_insertion_point(message_clear_start:fixbug.ResultCode)
@@ -195,9 +177,9 @@ void ResultCode::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  errmsg_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  errmsg_.ClearToEmpty();
   errcode_ = 0;
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* ResultCode::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
@@ -228,7 +210,9 @@ const char* ResultCode::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
           ctx->SetLastTag(tag);
           goto success;
         }
-        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
         CHK_(ptr != nullptr);
         continue;
       }
@@ -262,7 +246,7 @@ failure:
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target, stream);
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:fixbug.ResultCode)
   return target;
@@ -317,13 +301,12 @@ void ResultCode::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 void ResultCode::MergeFrom(const ResultCode& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:fixbug.ResultCode)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from.errmsg().size() > 0) {
-
-    errmsg_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.errmsg_);
+    _internal_set_errmsg(from._internal_errmsg());
   }
   if (from.errcode() != 0) {
     _internal_set_errcode(from._internal_errcode());
@@ -350,9 +333,8 @@ bool ResultCode::IsInitialized() const {
 
 void ResultCode::InternalSwap(ResultCode* other) {
   using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  errmsg_.Swap(&other->errmsg_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  errmsg_.Swap(&other->errmsg_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   swap(errcode_, other->errcode_);
 }
 
@@ -363,45 +345,46 @@ void ResultCode::InternalSwap(ResultCode* other) {
 
 // ===================================================================
 
-void getFriendListRequest::InitAsDefaultInstance() {
-}
 class getFriendListRequest::_Internal {
  public:
 };
 
-getFriendListRequest::getFriendListRequest()
-  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+getFriendListRequest::getFriendListRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:fixbug.getFriendListRequest)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:fixbug.getFriendListRequest)
 }
 getFriendListRequest::getFriendListRequest(const getFriendListRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _internal_metadata_(nullptr) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   id_ = from.id_;
   // @@protoc_insertion_point(copy_constructor:fixbug.getFriendListRequest)
 }
 
 void getFriendListRequest::SharedCtor() {
-  id_ = 0u;
+id_ = 0u;
 }
 
 getFriendListRequest::~getFriendListRequest() {
   // @@protoc_insertion_point(destructor:fixbug.getFriendListRequest)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void getFriendListRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
+void getFriendListRequest::ArenaDtor(void* object) {
+  getFriendListRequest* _this = reinterpret_cast< getFriendListRequest* >(object);
+  (void)_this;
+}
+void getFriendListRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void getFriendListRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const getFriendListRequest& getFriendListRequest::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_getFriendListRequest_friend_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void getFriendListRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:fixbug.getFriendListRequest)
@@ -410,7 +393,7 @@ void getFriendListRequest::Clear() {
   (void) cached_has_bits;
 
   id_ = 0u;
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* getFriendListRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
@@ -433,7 +416,9 @@ const char* getFriendListRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAM
           ctx->SetLastTag(tag);
           goto success;
         }
-        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
         CHK_(ptr != nullptr);
         continue;
       }
@@ -461,7 +446,7 @@ failure:
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target, stream);
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:fixbug.getFriendListRequest)
   return target;
@@ -509,7 +494,7 @@ void getFriendListRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& fro
 void getFriendListRequest::MergeFrom(const getFriendListRequest& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:fixbug.getFriendListRequest)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -538,7 +523,7 @@ bool getFriendListRequest::IsInitialized() const {
 
 void getFriendListRequest::InternalSwap(getFriendListRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(id_, other->id_);
 }
 
@@ -549,10 +534,6 @@ void getFriendListRequest::InternalSwap(getFriendListRequest* other) {
 
 // ===================================================================
 
-void getFriendListResponse::InitAsDefaultInstance() {
-  ::fixbug::_getFriendListResponse_default_instance_._instance.get_mutable()->result_ = const_cast< ::fixbug::ResultCode*>(
-      ::fixbug::ResultCode::internal_default_instance());
-}
 class getFriendListResponse::_Internal {
  public:
   static const ::fixbug::ResultCode& result(const getFriendListResponse* msg);
@@ -562,16 +543,17 @@ const ::fixbug::ResultCode&
 getFriendListResponse::_Internal::result(const getFriendListResponse* msg) {
   return *msg->result_;
 }
-getFriendListResponse::getFriendListResponse()
-  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+getFriendListResponse::getFriendListResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  friends_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:fixbug.getFriendListResponse)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:fixbug.getFriendListResponse)
 }
 getFriendListResponse::getFriendListResponse(const getFriendListResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _internal_metadata_(nullptr),
       friends_(from.friends_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_result()) {
     result_ = new ::fixbug::ResultCode(*from.result_);
   } else {
@@ -581,27 +563,29 @@ getFriendListResponse::getFriendListResponse(const getFriendListResponse& from)
 }
 
 void getFriendListResponse::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_getFriendListResponse_friend_2eproto.base);
-  result_ = nullptr;
+result_ = nullptr;
 }
 
 getFriendListResponse::~getFriendListResponse() {
   // @@protoc_insertion_point(destructor:fixbug.getFriendListResponse)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void getFriendListResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
   if (this != internal_default_instance()) delete result_;
 }
 
+void getFriendListResponse::ArenaDtor(void* object) {
+  getFriendListResponse* _this = reinterpret_cast< getFriendListResponse* >(object);
+  (void)_this;
+}
+void getFriendListResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void getFriendListResponse::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const getFriendListResponse& getFriendListResponse::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_getFriendListResponse_friend_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void getFriendListResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:fixbug.getFriendListResponse)
@@ -610,11 +594,11 @@ void getFriendListResponse::Clear() {
   (void) cached_has_bits;
 
   friends_.Clear();
-  if (GetArenaNoVirtual() == nullptr && result_ != nullptr) {
+  if (GetArena() == nullptr && result_ != nullptr) {
     delete result_;
   }
   result_ = nullptr;
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* getFriendListResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
@@ -650,7 +634,9 @@ const char* getFriendListResponse::_InternalParse(const char* ptr, ::PROTOBUF_NA
           ctx->SetLastTag(tag);
           goto success;
         }
-        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
         CHK_(ptr != nullptr);
         continue;
       }
@@ -686,7 +672,7 @@ failure:
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target, stream);
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:fixbug.getFriendListResponse)
   return target;
@@ -742,7 +728,7 @@ void getFriendListResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& fr
 void getFriendListResponse::MergeFrom(const getFriendListResponse& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:fixbug.getFriendListResponse)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -772,7 +758,7 @@ bool getFriendListResponse::IsInitialized() const {
 
 void getFriendListResponse::InternalSwap(getFriendListResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   friends_.InternalSwap(&other->friends_);
   swap(result_, other->result_);
 }
@@ -873,13 +859,13 @@ void FriendServiceRpc_Stub::getFriendList(::PROTOBUF_NAMESPACE_ID::RpcController
 }  // namespace fixbug
 PROTOBUF_NAMESPACE_OPEN
 template<> PROTOBUF_NOINLINE ::fixbug::ResultCode* Arena::CreateMaybeMessage< ::fixbug::ResultCode >(Arena* arena) {
-  return Arena::CreateInternal< ::fixbug::ResultCode >(arena);
+  return Arena::CreateMessageInternal< ::fixbug::ResultCode >(arena);
 }
 template<> PROTOBUF_NOINLINE ::fixbug::getFriendListRequest* Arena::CreateMaybeMessage< ::fixbug::getFriendListRequest >(Arena* arena) {
-  return Arena::CreateInternal< ::fixbug::getFriendListRequest >(arena);
+  return Arena::CreateMessageInternal< ::fixbug::getFriendListRequest >(arena);
 }
 template<> PROTOBUF_NOINLINE ::fixbug::getFriendListResponse* Arena::CreateMaybeMessage< ::fixbug::getFriendListResponse >(Arena* arena) {
-  return Arena::CreateInternal< ::fixbug::getFriendListResponse >(arena);
+  return Arena::CreateMessageInternal< ::fixbug::getFriendListResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

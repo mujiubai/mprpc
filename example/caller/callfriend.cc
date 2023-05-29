@@ -18,20 +18,20 @@ int main(int argc, char **argv) {
   request.set_id(1);
 
   fixbug::getFriendListResponse response;
-  MprpcController controller;
+  MprpcController controller ;
 
   stub.getFriendList(&controller, &request, &response, nullptr);
 
   if (controller.Failed()) {
-    LOG_INFO("%s", controller.ErrorText().c_str());
+    printf("%s", controller.ErrorText().c_str());
   } else {
     if (response.result().errcode() == 0) {
-      LOG_INFO("rpc login response: ");
+      printf("rpc login response: ");
       for (auto name : response.friends()) {
-        LOG_INFO("%s", name.c_str());
+        printf("%s", name.c_str());
       }
     } else {
-      LOG_INFO("rpc login response error:%s",
+      printf("rpc login response error:%s",
                response.result().errmsg().c_str());
     }
   }

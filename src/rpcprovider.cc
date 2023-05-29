@@ -5,7 +5,7 @@
 
 #include "logger.h"
 #include "mprpcapplication.h"
-#include "rpcheader.pb.h"
+#include "../protobuf/rpcheader.pb.h"
 
 void RpcProvider::NotiFyService(google::protobuf::Service *service) {
   ServiceInfo service_info;
